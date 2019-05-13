@@ -262,7 +262,7 @@ export class MatMultiYearView<D> implements AfterContentInit {
   }
 
   /** mod that handles case where first number is negative */
-  _mod(a: number, b: number) {
+  private _mod(a: number, b: number) {
     return (a % b + b) % b;
   }
 

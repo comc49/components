@@ -113,11 +113,6 @@ export class MatCalendarHeader<D> {
     }[this.calendar.currentView];
   }
 
-  /** mod that handles case where first number is negative */
-  _mod(a: number, b: number) {
-    return (a % b + b) % b;
-  }
-
   /** Handles user clicks on the period label. */
   currentPeriodClicked(): void {
     this.calendar.currentView = this.calendar.currentView == 'month' ? 'multi-year' : 'month';
@@ -177,6 +172,11 @@ export class MatCalendarHeader<D> {
     }
     return Math.floor( (this._dateAdapter.getYear(date1) -  minYear) / yearsPerPage) ==
         Math.floor( (this._dateAdapter.getYear(date2) - minYear) / yearsPerPage);
+  }
+
+  /** mod that handles case where first number is negative */
+  private _mod(a: number, b: number) {
+    return (a % b + b) % b;
   }
 }
 
