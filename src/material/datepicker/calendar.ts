@@ -73,7 +73,7 @@ export class MatCalendarHeader<D> {
 
     // The offset from the active year to the "slot" for the starting year is the
     // *actual* first rendered year in the multi-year view, and the last year is
-    // just one yearsPerPage away.
+    // just yearsPerPage - 1 away.
     const activeYear = this._dateAdapter.getYear(this.calendar.activeDate);
     const minYearOfPage = activeYear - getActiveOffset(this.calendar.activeDate,
       this.calendar.minDate, this.calendar.maxDate);

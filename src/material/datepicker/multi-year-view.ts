@@ -44,8 +44,10 @@ function euclideanModulo (a: number, b: number): number {
   return (a % b + b) % b;
 }
 
-/** We pick a "starting" year such that either the maximum year would be at the end */
-/* or the minimum year would be at the begining of a page. */
+/**
+ * We pick a "starting" year such that either the maximum year would be at the end
+ * or the minimum year would be at the beginning of a page.
+ */
 function getStartingYear(minDate: any, maxDate: any): number {
   let startingYear = 0;
   if (maxDate) {
@@ -57,9 +59,11 @@ function getStartingYear(minDate: any, maxDate: any): number {
   return startingYear;
 }
 
-/** When the multi-year view is first opened, the active year will be in view. */
-/* So we compute how many years are between the active year and the *slot* where our */
-/* "startingYear" will render when paged into view. */
+/**
+ * When the multi-year view is first opened, the active year will be in view.
+ * So we compute how many years are between the active year and the *slot* where our
+ * "startingYear" will render when paged into view.
+ */
 export function getActiveOffset(activeDate: any, minDate: any, maxDate: any): number {
   const activeYear = activeDate.getFullYear();
   return euclideanModulo((activeYear - getStartingYear(minDate, maxDate)), yearsPerPage);
@@ -170,7 +174,7 @@ export class MatMultiYearView<D> implements AfterContentInit {
 
     // We want a range years such that we maximize the number of
     // enabled dates visible at once. This prevents issues where the minimum year
-    // is the last year of a page or the maximum year is the first item of a page.
+    // is the last item of a page OR the maximum year is the first item of a page.
 
     // The offset from the active year to the "slot" for the starting year is the
     // *actual* first rendered year in the multi-year view.
@@ -201,10 +205,6 @@ export class MatMultiYearView<D> implements AfterContentInit {
 
   /** Handles keydown events on the calendar body when calendar is in multi-year view. */
   _handleCalendarBodyKeydown(event: KeyboardEvent): void {
-    // TODO(mmalerba): We currently allow keyboard navigation to disabled dates, but just prevent
-    // disabled ones from being selected. This may not be ideal, we should look into whether
-    // navigation should skip over disabled dates, and if so, how to implement that efficiently.
-
     const oldActiveDate = this._activeDate;
     const isRtl = this._isRtl();
 
