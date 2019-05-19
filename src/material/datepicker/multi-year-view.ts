@@ -174,8 +174,9 @@ export class MatMultiYearView<D> implements AfterContentInit {
 
     // The offset from the active year to the "slot" for the starting year is the
     // *actual* first rendered year in the multi-year view.
-    let activeYear = this._dateAdapter.getYear(this._activeDate);
-    let minYearOfPage = activeYear - getActiveOffset(this._activeDate, this.minDate, this.maxDate);
+    const activeYear = this._dateAdapter.getYear(this._activeDate);
+    const minYearOfPage =
+      activeYear - getActiveOffset(this._activeDate, this.minDate, this.maxDate);
 
     this._years = [];
     for (let i = 0, row: number[] = []; i < yearsPerPage; i++) {
